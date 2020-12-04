@@ -1,0 +1,101 @@
+
+<div class="row">
+    <div class="col-md-12 mt-4">
+        <div class="card shadow">
+            <div class="card-body mt-2 animated fadeIn">
+                <div class="row">
+                    <div class="col-md-4 col-sm-10">
+                        <!-- <p class="text-themecolor">{{ editar? 'Editar Insumos': 'Registrar Insumos'}}</p> -->
+                    </div>
+                    <div class="col-md-1 col-sm-2">
+                        <!-- <button *ngIf="editar" type="button" class="close" (click)="registro()">
+                            <span aria-hidden="true" style="color: crimson;">&times;</span>
+                        </button> -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5" *ngIf="!editar">
+                        <app-agregar-producto (salidaOutputR)="registrado($event)"></app-agregar-producto>
+                    </div>
+                    <div class="col-md-7" *ngIf="!editar">
+                        <div class="row mt-buscar">
+                            <div class="col-sm-12 col-12 mb-4">
+                                <!-- <input [(ngModel)]="termino" type="text" name="termino" (ngModelChange)="buscar(1,5)" class="form-control form-control-sm f-search" placeholder=" Buscar..."> -->
+                                
+                            </div>
+                        </div>
+                        <div class="table-responsive text-nowrap">
+                            <table class="table table-hover table-sm">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="text-center">Código del Producto</th>
+                                        <th scope="col" class="text-center">Nombre</th>
+                                        <th scope="col" class="text-center">Precio</th>
+                                        <th scope="col" class="text-center">Stock</th>
+                                        <th scope="col" class="text-center">Imagenes</th>
+                                        <th scope="col" class="text-center">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody >
+                                <!-- <tbody *ngIf="!cargando"> -->
+                                    <!-- <tr *ngFor="let insumo of insumos | paginate: {itemsPerPage: itemsPerPage, currentPage: pageActual, totalItems: totalItems, id: 'modulo'}"> -->
+                                    <tr *ngFor="let p of productos">
+                                        <td class="text-center">{{p.strCodigoProducto}}</td>
+                                        <td class="text-center">{{p.strNombre}}</td>
+                                        <td class="text-center">{{p.nmbPrecio}}</td>
+                                        <td class="text-center">{{p.nmbStock}}</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-block btn-info" data-toggle="modal" data-target="#exampleModalCenter" (click)="cargarDatos(p, p.jsonImagenes)">Imagenes</button>
+                                        </td>
+                                        <td class="text-center">
+                                            <button class="btn btn-sm btn-primary" (click)="changeView(p)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                                            <button class="btn btn-sm btn-danger" (click)="eliminarArticulo(p)"><i class="fa fa-times" aria-hidden="true"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <!-- SE MUESTRA CUANDO NO HAY REGISTROS -->
+                                <!-- <tbody *ngIf="!insumos || insumos === undefined || insumos.length===0 && !cargando"> -->
+                                <tbody *ngIf="!productos || productos === undefined || productos.length===0 && !cargando" >
+                                    <tr>
+                                        <td colspan="14">
+                                            <div class="alert-dismissible text-center" style="padding: .75rem 1.25rem;">
+                                                <i class="fa fa-frown-o fa-2x" aria-hidden="true"></i>
+                                                <h5 style="height: 100%;width: 100%;">¡NO HAY REGISTROS PARA MOSTRAR!
+                                                </h5>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <!-- SE MUESTRA CUANDO ESTÁ CARGANDO -->
+                                <tbody *ngIf="cargando">
+                                    <tr>
+                                        <td colspan="14">
+                                            <div class=" alert-dismissible text-center" style="padding: .75rem 1.25rem;">
+                                                <h5 style="height: 100%;width: 100%;"><strong><i
+                                                            class="fa fa-spinner fa-pulse"></i> CARGANDO</strong></h5>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="mt-4 float-right fadeIn">
+                            <!-- <pagination-controls class="my-pagination" id="modulo" responsive="true" (pageChange)="paginaActual($event)" previousLabel="Anterior" nextLabel="Siguiente">
+                            </pagination-controls> -->
+                        </div>
+                    </div>
+                    <div class="col-md-12 text-right" *ngIf="editar">
+                        <button *ngIf="editar" type="button" class="close" (click)="registro()">
+                            <span aria-hidden="true" style="color: crimson;">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="col-md-12" *ngIf="editar">
+                        <app-actualizar-producto [productoInput]="productoOutput" (salidaOutput)="actualizado($event)"></app-actualizar-producto>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-imagen-viewer [objeto]="productoOutputView" [img]="imagenes"></app-imagen-viewer>

@@ -1,0 +1,39 @@
+<!-- <button class="btn btn-sm btn-block btn-info" data-toggle="modal" data-target="#exampleModalCenter">Imagenes</button> -->
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">{{nombreArticulo}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div id="carouselExampleIndicators3" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li *ngFor="let car of imagenes; let i = index" data-target="#carouselExampleIndicators3" [attr.data-slide-to]="i" class="carousel-control-prev-icon" [ngClass]="{'active': i==0}"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item" *ngFor="let car of imagenes; let i = index" [ngClass]="{'active': i==0}">
+                        <div class="gradient"></div>
+                        <img class="img-carr" src="{{ruta}}{{car}}">
+                        <!-- <button class="btn-secondary btn-block" (click)="eliminarImagen(car,i)">Elimian</button> -->
+                    </div>
+                </div>
+                <a class="carousel-control-prev flecha-color" href="#carouselExampleIndicators3" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Anterior</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators3" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Siguiente</span>
+                </a>
+            </div>            
+        </div>
+      </div>
+    </div>
+  </div>
+

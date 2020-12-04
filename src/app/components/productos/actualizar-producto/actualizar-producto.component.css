@@ -1,0 +1,86 @@
+.carousel-control-prev-icon{
+    filter: invert(100%);
+}
+
+.carousel-control-next-icon{
+    filter: invert(100%);
+}
+
+.img-carr {
+    width: 100%;
+    height: 150px;
+}
+
+
+.btn-eliminar{
+    background: none;
+}
+
+.x-eliminar{
+    padding: 10px;
+    border-radius: 50%;
+    background-color: rgb(194, 194, 194, 0.8);
+}
+.x-eliminar:hover{
+    background-color: rgb(118, 118, 118,0.8);
+}
+
+
+#padre{
+    position:relative;
+}
+  
+#uno {
+    position: absolute;
+    /* background-color: rgba(247, 247, 247, 0.5); */
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+#uno:hover {
+    position: absolute;
+    background-color: rgba(214, 214, 214, 0.5);
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.btn-x {
+    position: absolute;
+    /* font-size: 1px;
+    padding: 5px 5px; */
+    /* border-radius: 6px;
+    margin-left: auto;
+    margin-right: auto; */
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}

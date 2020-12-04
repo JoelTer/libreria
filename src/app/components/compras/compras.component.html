@@ -1,0 +1,56 @@
+
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="card-columns">
+                <div class="card" *ngFor="let c of compras">                    
+                  <img class="card-img-top" src="{{ruta}}{{c.jsonProductos[0].strImagen}}" alt="Card image cap">
+                  <div class="card-body">
+                    <div class="col-12">
+                        <h5 class="card-title">$ {{c.nmbTotalCompra}}</h5>
+                    </div>
+                    <div class="col-12">
+                        Productos comprados: {{c.jsonProductos.length}}
+                    </div>
+                    <div class="col-12">
+                        <button class="btn btn-sm btn-secondary" data-toggle="modal" data-target=".bd-example-modal-lg" (click)="verDetalles(c.jsonProductos)">Ver detalles de la compra</button>
+                    </div>
+                    <div class="col-12 pt-4">
+                        <p class="card-text"><small class="text-muted">{{c.created_at | date : 'medium'}}</small></p>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="col-12">
+            <table class="table">
+                <caption>Lista de productos</caption>
+                <thead>
+                  <tr>
+                    <th class="text-center" scope="col">Nombre del producto</th>
+                    <th class="text-center" scope="col">Cantidad de productos</th>
+                    <th class="text-center" scope="col">Total</th>
+                    <th class="text-center" scope="col">Imagen</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let p of detalle">
+                    <td class="text-center">{{p.strNombreProducto}}</td>
+                    <td class="text-center">{{p.nmbCantidad}}</td>
+                    <td class="text-center">{{p.nmbTotalProducto}}</td>
+                    <td class="text-center">
+                        <img class="card-img-top" style="height: 7rem; width: 7rem;" src="{{ruta}}{{p.strImagen}}" alt="Card image cap">
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+  </div>
+</div>

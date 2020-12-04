@@ -1,0 +1,74 @@
+<div class="row">
+    <div class="col-md-12 mt-4">
+        <div class="row">
+            <div class="col-md-5">
+                <form (ngSubmit)="actualizarProducto(forma)" #forma="ngForm" encType="multipart/form-data">
+                    <div class="form-row animated fadeIn">
+                        <div class="form-group col-12 mb-3">
+                            <label class="card-subtitle mb-1">Código del producto:</label>
+                            <input [ngClass]="{'is-invalid': codigoProducto.errors?.required && forma.controls['codigoProducto'].touched }" class="form-control form-control-sm" type="text" placeholder="Código de Producto" name="codigoProducto" [(ngModel)]="articuloUp.strCodigoProducto" [disabled]="true"
+                                required #codigoProducto="ngModel">
+                            <div class="invalid-feedback" *ngIf="codigoProducto.errors?.required">
+                                Ingrese el código del producto.
+                            </div>
+                        </div>
+                        <div class="form-group col-12 mb-3">
+                            <label class="card-subtitle mb-1">Nombre:</label>
+                            <input [ngClass]="{'is-invalid': nombre.errors?.required && forma.controls['nombre'].touched }" class="form-control form-control-sm" type="text" placeholder="Nombre" name="nombre" [(ngModel)]="articuloUp.strNombre" required #nombre="ngModel">
+                            <div class="invalid-feedback" *ngIf="nombre.errors?.required">
+                                Ingrese el nombre del producto.
+                            </div>
+                        </div>
+                        <div class="form-group col-12 mb-3">
+                            <label class="card-subtitle mb-1">Precio:</label>
+                            <input [ngClass]="{'is-invalid': precio.errors?.required && forma.controls['precio'].touched }" class="form-control form-control-sm" type="number" placeholder="Precio" name="precio" [(ngModel)]="articuloUp.nmbPrecio" required #precio="ngModel"
+                                min="0">
+                            <div class="invalid-feedback" *ngIf="precio.errors?.required">
+                                Ingrese el precio del producto
+                            </div>
+                        </div>
+                        <div class="form-group col-12 mb-3">
+                            <label class="card-subtitle mb-1">Stock:</label>
+                            <input [ngClass]="{'is-invalid': stock.errors?.required && forma.controls['stock'].touched }" class="form-control form-control-sm" type="number" placeholder="Stock" name="stock" [(ngModel)]="articuloUp.nmbStock" required #stock="ngModel"
+                                min="0">
+                            <div class="invalid-feedback" *ngIf="stock.errors?.required">
+                                Ingrese la cantidad de stock.
+                            </div>
+                        </div>
+                        <div class="form-group col-12 mb-3">
+                            <span class="btn btn-sm btn-primary btn-file btn-block" >
+                                Agregar nuevas imagenes <input type="file" (change)="cargarImagenes($event)" multiple>
+                            </span>
+                            <div *ngIf="imagenesNombres.length>0">
+                                <li *ngFor="let im of imagenesNombres">
+                                    {{im}}
+                                </li>
+                                
+                            </div>
+                        </div>
+                        <div class="form-group col-12 text-right">
+                            <button type="button" (click)="recargar()" class="btn btn-danger mr-2"><i class="fa fa-times"
+                                    aria-hidden="true"></i> Cancelar</button>
+                            <button [disabled]="forma.invalid" type="submit" class="btn btn-info"><i class="fa fa-check"
+                                    aria-hidden="true"></i> Actualizar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-7">
+                FOTOS
+                <div class="row">
+                    <div class="col-md-6" *ngFor="let img of articuloUp.jsonImagenes">
+                        <!-- {{img}} -->
+                        <div id="padre">
+                            <img class="img-carr" src="{{ruta}}{{img}}">
+                            <div id="uno">
+                                <button type="button" class="btn btn-eliminar"  (click)="eliminarImagen(img)"><i class="fa fa-times x-eliminar" aria-hidden="true"></i></button>
+                            </div>
+                          </div>                          
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

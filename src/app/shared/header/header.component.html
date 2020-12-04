@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" [routerLink]="['/dashboard']">
+      <img src="assets/images/logo-lib.png" alt="homepage" class="light-logo"
+                        style="width: 65px; height: 4rem;" />
+    </a>
+  
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/dashboard']">Home</a>
+        </li>
+        <li class="nav-item" *ngIf="!admin">
+          <a class="nav-link" [routerLink]="['/carrito']"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+        </li>
+        <li class="nav-item" *ngIf="admin">
+          <a class="nav-link" [routerLink]="['/libros']">Productos</a>
+        </li>
+        <li class="nav-item" *ngIf="!admin">
+          <a class="nav-link" [routerLink]="['/mis-compras']">Mis compras</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <button type="button" class="btn btn-link session" (click)="cerrarSesion()"> <i class="fa fa-sign-out" aria-hidden="true"></i> Cerrar Sesión</button>
+      </form>
+    </div>
+  </nav>

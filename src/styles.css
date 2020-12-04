@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+.background-pattern {
+    background-image: url("assets/images/libreria.jpg");
+    background-repeat: repeat;
+}
+
+.background-pattern-r {
+    background-image: url("assets/images/biblioteca.jpg");
+    background-repeat: repeat;
+}

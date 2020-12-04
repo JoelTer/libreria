@@ -1,0 +1,66 @@
+<div  class="registro-register-t registro-sidebar background-pattern-r">
+    <div class="row">
+        <div class="text-center registro-register">
+            <div class="card registro-box">
+                <div class="align-content-md-center subregistro-box">
+                    <div class="form-group text-center mt-4">
+                        <img src="../../../assets/images/user.png" class="img-fluid" style="height: 6rem; width: 6rem;" alt="Libros">
+                    </div>
+                    <form (ngSubmit)="registrarUsuario(forma)" #forma="ngForm">
+                        <div class="form-group text-left">
+                            <label for="strNombre" class="small">Nombre</label>
+                            <input type="text" class="form-control form-control-sm input-box" [ngClass]="{'is-invalid': strNombre.errors?.required && forma.controls['strNombre'].touched }" name="strNombre" [(ngModel)]="usuario.strNombre"
+                            required #strNombre="ngModel" placeholder="Nombre" >
+                            <div class="invalid-feedback" *ngIf="strNombre.errors?.required">
+                                <small>Es necesario ingresar nombre de usuario.</small>
+                            </div>
+                
+                        </div>
+                        <div class="form-group text-left">
+                            <label for="strPrimerApellido" class="small">Apellido Paterno</label>
+                            <input type="text" class="form-control form-control-sm input-box" [ngClass]="{'is-invalid': strPrimerApellido.errors?.required && forma.controls['strPrimerApellido'].touched }" name="strPrimerApellido" [(ngModel)]="usuario.strPrimerApellido"
+                            required #strPrimerApellido="ngModel" placeholder="Apellido paterno">
+                            <div class="invalid-feedback" *ngIf="strPrimerApellido.errors?.required">
+                                <small>Es necesario ingresar apellido paterno.</small>
+                            </div>
+                        </div>
+                        <div class="form-group text-left">
+                            <label for="strSegundoApellido" class="small">Apellido Materno</label>
+                            <input type="text" class="form-control form-control-sm input-box" name="strSegundoApellido" [(ngModel)]="usuario.strSegundoApellido"
+                            required #strSegundoApellido="ngModel" placeholder="Apellido Materno">
+                        </div>
+                        <div class="form-group text-left">
+                            <label for="strCorreo" class="small">Correo electrónico</label>
+                            <input type="text" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" class="form-control form-control-sm input-box" [ngClass]="{'is-invalid': strCorreo.errors?.required && forma.controls['strCorreo'].touched }" name="strCorreo" [(ngModel)]="usuario.strCorreo"
+                            required #strCorreo="ngModel" placeholder="Correo electrónico">
+                            <div class="invalid-feedback" *ngIf="strCorreo.errors?.required">
+                                <small>Es necesario ingresar un correo.</small>
+                            </div>
+                            <div class="bad-pattern" *ngIf="strCorreo.errors?.pattern">
+                                <small>El correo electrónico es inválido. (example@direccion.com)</small>
+                            </div>
+                        </div>
+                        <div class="form-group text-left">
+                            <label for="strPassword" class="small">Contraseña</label>
+                            <input pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$" type="password" class="form-control form-control-sm input-box" [ngClass]="{'is-invalid': strPassword.errors?.required && forma.controls['strPassword'].touched }" name="strPassword" [(ngModel)]="usuario.strPassword"
+                            required #strPassword="ngModel" placeholder="Contraseña">
+                            <div class="invalid-feedback" *ngIf="strPassword.errors?.required">
+                                <small>Es necesario ingresar una contraseña.</small>
+                            </div>
+                            <div class="bad-pattern" *ngIf="strPassword.errors?.pattern">
+                                <small>La contraseña debe tener al entre 8 y 16 caracteres, al menos un número, al menos una minúscula y al menos una mayúscula.</small>
+                            </div>
+
+                        </div>
+                        <div class="form-group text-left mb-4">
+                            <button type="submit" class="btn btn-block btn-info btn-sm" [disabled]="forma.invalid">Registrarse</button>
+                        </div>
+                    </form>
+                    <div class="form-group text-center small mt-4">
+                        <p>¿Ya tienes una cuenta? <a [routerLink]="['/login']">Inicio de sesión</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
