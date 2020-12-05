@@ -91,18 +91,22 @@ export class ActualizarProductoComponent implements OnInit {
     }
   }
 
-  recargar(){
-    this.articuloUp._id = this.articulo._id
-    this.articuloUp.strCodigoProducto = this.articulo.strCodigoProducto
-    this.articuloUp.strNombre = this.articulo.strNombre
-    this.articuloUp.nmbPrecio = this.articulo.nmbPrecio
-    this.articuloUp.nmbStock = this.articulo.nmbStock
-    this.articuloUp.jsonImagenes = []
-    this.articuloUp.jsonImagenesEliminadas = []
-    for (const i of this.articulo.jsonImagenes) {
-      this.articuloUp.jsonImagenes.push(i)
-    }
+  salir(){
+    this.salidaOutput.emit()
   }
+
+  // recargar(){
+  //   this.articuloUp._id = this.articulo._id
+  //   this.articuloUp.strCodigoProducto = this.articulo.strCodigoProducto
+  //   this.articuloUp.strNombre = this.articulo.strNombre
+  //   this.articuloUp.nmbPrecio = this.articulo.nmbPrecio
+  //   this.articuloUp.nmbStock = this.articulo.nmbStock
+  //   this.articuloUp.jsonImagenes = []
+  //   this.articuloUp.jsonImagenesEliminadas = []
+  //   for (const i of this.articulo.jsonImagenes) {
+  //     this.articuloUp.jsonImagenes.push(i)
+  //   }
+  // }
 
   cargarImagenes(event){
     this.articuloUp.jsonImagenesNew = []

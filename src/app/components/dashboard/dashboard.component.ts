@@ -29,6 +29,7 @@ export class DashboardComponent implements OnInit {
   cargando = false;
   productos = [];
   ruta = `${environment.muestraImagen}libros&img=`;
+  imagenes = []
 
   producto = {
     idUsuario: "",
@@ -48,6 +49,10 @@ export class DashboardComponent implements OnInit {
       this.router.navigateByUrl('/login')
     }
     
+  }
+
+  cargarDatos(images: any){
+    this.imagenes = images;
   }
 
   getLibros(){

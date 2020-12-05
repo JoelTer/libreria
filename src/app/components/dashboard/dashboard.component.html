@@ -4,26 +4,7 @@
       <div class="row mt-4">
           <div class="col-md-4 mb-2" *ngFor="let p of productos; let i = index">
                 <div class="card">
-                  <div id="carousel3" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li *ngFor="let car of p.jsonImagenes; let i = index" data-target="#carousel" [attr.data-slide-to]="i" class="carousel-control-prev-icon" [ngClass]="{'active': i==0}"></li>
-                    </ol>
-                    <div class="carousel-inner" role="listbox">
-                        <div class="carousel-item" *ngFor="let car of p.jsonImagenes; let i = index" [ngClass]="{'active': i==0}">
-                            <div class="gradient"></div>
-                            <img class="img-carr" src="{{ruta}}{{car}}">
-                        </div>
-                    </div>
-                    <a class="carousel-control-prev flecha-color" href="#carousel3" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Anterior</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carousel3" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Siguiente</span>
-                    </a>
-                  </div>  
-                  <!-- <img class="card-img-top img-carr" [src]="ruta+p.jsonImagenes[0]" alt="Card image cap"> -->
+                  <img class="img-carr pointer" src="{{ruta}}{{p.jsonImagenes[0]}}" data-toggle="modal" data-target=".bd-example-modal-lg" (click)="cargarDatos(p.jsonImagenes)">   
                   <div class="card-body">
                     <form (ngSubmit)="agregarCarrito(p,forma)" #forma="ngForm" encType="multipart/form-data">
                       <h5 class="card-title">{{p.strNombre}}</h5>
@@ -45,3 +26,31 @@
          
       </div>
   </div>
+
+
+  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div id="carousel3" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+              <li *ngFor="let car of imagenes; let i = index" data-target="#carousel" [attr.data-slide-to]="i" class="carousel-control-prev-icon" [ngClass]="{'active': i==0}"></li>
+          </ol>
+          <div class="carousel-inner" role="listbox">
+              <div class="carousel-item text-center" *ngFor="let car of imagenes; let i = index" [ngClass]="{'active': i==0}">
+                  <div class="gradient"></div>
+                  <img class="img-modal img-fluid" src="{{ruta}}{{car}}">
+              </div>
+          </div>
+          <a class="carousel-control-prev flecha-color" href="#carousel3" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Anterior</span>
+          </a>
+          <a class="carousel-control-next" href="#carousel3" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Siguiente</span>
+          </a>
+        </div>  
+      </div>
+    </div>
+  </div>
+  
